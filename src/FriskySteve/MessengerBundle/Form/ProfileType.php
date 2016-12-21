@@ -1,12 +1,11 @@
 <?php
-// src/AppBundle/Form/RegistrationType.php
 
 namespace FriskySteve\MessengerBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class RegistrationType extends AbstractType
+class ProfileType extends AbstractType  
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,7 +17,7 @@ class RegistrationType extends AbstractType
 
     public function getParent()
     {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
 
         // Or for Symfony < 2.8
         // return 'fos_user_registration';
@@ -26,7 +25,7 @@ class RegistrationType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'app_user_registration';
+        return 'app_user_profile';
     }
 
     // For Symfony 2.x

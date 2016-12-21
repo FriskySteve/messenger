@@ -69,6 +69,14 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: FriskySteve\MessengerBundle\Entity\User
+    registration:
+        form:
+            type: FriskySteve\MessengerBundle\Form\RegistrationType
+            
+    profile:
+        form:
+            type: FriskySteve\MessengerBundle\Form\ProfileType
+
     
 services:
     fos_user.doctrine_registry:
