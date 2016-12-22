@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+    <h1>Past Conversations</h1>
+    <ul>
+        {% for conversation in conversations %}
+            <li>{{ conversation.title|e }} <br><button value="show"></li>
+        {% endfor %}
+    </ul>
+    {% endblock %}

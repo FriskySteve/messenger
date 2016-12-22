@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MessengerBundle:MessageAction:new{% endblock %}
+
+{% block body %}
+<h1>Welcome to the MessageAction:new page</h1>
+{{ form_start(form) }}
+{{ form_widget(form.post) }}
+ś{{ form_end(form) }}
+{% endblock %}
