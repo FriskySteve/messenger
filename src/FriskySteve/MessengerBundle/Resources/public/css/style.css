@@ -2,3 +2,8 @@ body
 {
     background-color: darkslateblue;
 }
+
+.msgBox{
+    border: solid 3px;
+    background-color: lime;
+}

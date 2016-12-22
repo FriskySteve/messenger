@@ -4,6 +4,11 @@
 
 {% block body %}
 <h1>Welcome to the MessageAction:new page</h1>
+<div class="msgBox">
+    {% for message in messages %}
+        {{message.user.username}}: {{message.post}}: at: {{message.date|date("Y-m-d H:m:s") }}<br>
+    {% endfor %}
+</div>
 {{ form_start(form) }}
 {{ form_widget(form.post) }}
 ś{{ form_end(form) }}

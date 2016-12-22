@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+    <h1>Participants List</h1>
+    <ul>
+        {% for participant in participants %}
+            <li>{{ participant.username}} <br></li>
+        {% endfor %}
+    </ul>
+    {% endblock %}

@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class MessageController extends Controller
 {
     /**
-     * @Route("/newMessage/{id}")
+     * @Route("/newMessage/{id}", name="newMessage")
      * @Template("MessengerBundle:MessageAction:new.html.twig")
      * @Method({"POST", "GET"})
      */
@@ -24,7 +24,7 @@ class MessageController extends Controller
         $message = new Message();
        
         $form = $this->createFormBuilder($message)
-            ->add('post', TextareaType::class, array( 'attr'=>array( 'placeholder'=>'Type ...' ) ) )
+            ->add('post', "text", array( 'attr'=>array( 'placeholder'=>'Type ...' ) ) )
             ->add('save','submit')
             ->getForm();
        
@@ -41,8 +41,16 @@ class MessageController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
+            
+            
+//            return array( 'messages'=>$messages );
         }
-        return array('form'=>$form->createView());
+        
+        $repository = $this->getDoctrine()->getRepository("MessengerBundle:Conversation");
+        $conversation=$repository->findOneById($id);
+        $messages = $conversation->getMessages();
+            
+        return array( 'form'=>$form->createView(), 'messages'=>$messages );
 
        
     }

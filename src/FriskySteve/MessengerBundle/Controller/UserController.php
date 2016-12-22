@@ -18,5 +18,10 @@ class UserController extends Controller
         $user = $repository->findAll();
         return array('users'=>$user);
     }
+    
+    public function addToConversation($conversation_id, $user_id){
+        
+        
+    }
 
 }

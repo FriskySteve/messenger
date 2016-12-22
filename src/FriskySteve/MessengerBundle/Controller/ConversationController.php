@@ -51,8 +51,10 @@ class ConversationController extends Controller
             $em->persist($user1);
             $em->persist($user2);
             $em->flush();
+            
+            $redirect = $this->redirectToRoute('newMessage', array('id' => $conversation->getId()));    
+            return $redirect;
             }
-
         return array('form'=>$form->createView());
     }
 
@@ -77,5 +79,45 @@ class ConversationController extends Controller
         echo '<pre>';
         return array('conversations'=>$conversation);
     }
+    
+    /**
+     * @Route("/participantList/{conversation_id}", name="participantList")
+     * @param type $conversation_id
+     * @Template("MessengerBundle:Conversation:participant_list.html.twig")
+     */
+    
+    public function participantListAction($conversation_id){
+        $repository = $this->getDoctrine()->getRepository("MessengerBundle:Conversation");
+        $conversation=$repository->findOneById($conversation_id);
+        $participant = $conversation->getUsers();
+        return array('participants'=>$participant);
+    }
+    
+    /**
+     * @Route("/addParticipant/{conversation_id}/{user_id}")
+     * @param type $conversation_id
+     * @param type $user_id
+     * @Template("MessengerBundle:Conversation:add_participant.html.twig")
+     */
+    
+    public function addParticipantAction($conversation_id, $user_id){
+        $repository = $this->getDoctrine()->getRepository("MessengerBundle:Conversation");
+        $conversation = $repository->findOneById($conversation_id);
+        $repository2 = $this->getDoctrine()->getRepository("MessengerBundle:User");
+        $user= $repository2->findOneById($user_id);
+        $conversation->addUser($user);
+        $user->addConversation($conversation);
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($conversation);
+        $em->persist($user);
+        $em->flush();
+        
+        return $this->redirectToRoute('participantList', array('conversation_id'=>$conversation_id));
+        
+        
+    }
+    
+    
 
 }
