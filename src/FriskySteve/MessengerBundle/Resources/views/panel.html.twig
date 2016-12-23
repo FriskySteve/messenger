@@ -1,1 +1,14 @@
 {% extends 'base.html.twig' %}
+{% block body %}
+    <div class="bigBox">
+        <div>
+            Title
+        </div>
+        <div class="leftPanel">{{ render( controller( 'MessengerBundle:User:showAllUsers' ) ) }}</div>
+        <div class="centerPanel">BIG GREEN Box Gonna be here{#{{ render( controller( 'MessengerBundle:Message:newMessage' ) ) }}#} 
+           <div>Msg Box</div>
+            <div>Participant list</div>
+        </div>
+        <div class="rightPanel">{{ render( controller( 'MessengerBundle:Conversation:showAllCoversations' ) ) }}</div>
+    </div>
+{% endblock body %}

@@ -4,15 +4,15 @@ namespace FriskySteve\MessengerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-/**
- * @Route("/panel/")
- */
+
 
 class PanelController extends Controller
 {
     /**
-     * @Route("/newConversation")
+     * @Route("/panel", name="panel")
+     * @Template("MessengerBundle::panel.html.twig")
      */
     public function newConversationAction()
     {

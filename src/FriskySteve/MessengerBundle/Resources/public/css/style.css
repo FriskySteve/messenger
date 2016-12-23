@@ -1,9 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+
 body
 {
     background-color: darkslateblue;
+    margin:0;
+    padding:0;
+}
+
+.bigBox{
+    width: 100%;
+    display: block;
+    padding:20px;
 }
 
 .msgBox{
     border: solid 3px;
     background-color: lime;
+}
+
+.leftPanel{
+    
+}
+
+.centerPanel{
+    width: 50%;
+    position: relative;
+    float: left;
+}
+
+.rightPanel{
+    
+}
+
+.leftPanel, .rightPanel
+{
+    position: relative;
+    margin: 5px;
+    width: calc(25% - 20px);
+    background-color: lightgrey;
+    float: left;
 }
